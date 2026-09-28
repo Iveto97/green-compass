@@ -1,0 +1,58 @@
+header {
+    display: flex;
+    position: sticky;
+    height: 90px;
+    background-color: var(--nav-background);
+    top: 0;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav .logo {
+    display: flex;
+    justify-content: flex-start;
+    left: 10px;
+    /* position: absolute; */
+    align-items: center;
+}
+
+nav .logo a {
+    display: contents;
+    text-decoration: none;
+}
+
+.logo-image {
+    height: 100px;
+}
+
+nav .title {
+    display: inline-grid;
+    grid-auto-flow: row;
+    justify-items: center;
+    color: var(--dark-lime-green);
+    font-size: 20px;
+}
+
+nav .title span {
+    color: var(--dark-cyan);
+    font-weight: 600;
+}
+
+.hamburger {
+    position: relative;
+    width: 30px;
+    cursor: pointer;
+    appearance: none;
+    background: none;
+    outline: none;
+    border: none;
+    display: none;
+    scale: 0.8;
+}
