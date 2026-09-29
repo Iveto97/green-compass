@@ -23,6 +23,10 @@ app.get('/places', async (req, res) => {
 
     } catch (err) {
         console.error(err);
+        
+        res.status(500).json({
+            error: "Server error"
+        });
     }
 });
 
@@ -96,6 +100,8 @@ app.get("/places/:id", async (req, res) => {
    }
 });
 
-app.listen(3000, () => {
-    console.log('Server started');
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`Server started on port ${PORT}`);
 });
