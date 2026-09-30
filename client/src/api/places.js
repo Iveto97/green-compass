@@ -1,6 +1,6 @@
 import { get } from "./requester.js";
 
-const places_URL = "http://localhost:3000/places";
+const places_URL = "https://green-compass.onrender.com/places";
 
 export const getPlaces = async () => {
     const response = await get(places_URL);
