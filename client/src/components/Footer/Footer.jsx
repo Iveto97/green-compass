@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-container">
         <div className="green">
-          <img src="../../../public/footer-logo.png" alt="" />
+          <img src="/public/footer-logo.png" alt="Green Compass" />
           <h1>Зеленият Компас</h1>
           <p>Открий скритите кътчета на България.</p>
         </div>

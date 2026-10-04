@@ -6,7 +6,7 @@ export default function Home() {
     return (
       <section className="home">
         <div className="home-container">
-          <img src="../../../public/home-logo.png" alt="" />
+          <img src="/public/home-logo.png" alt="Green Compass" />
           <h1>ЗЕЛЕНИЯТ КОМПАС</h1>
           <div className="subtitle">ОТКРИЙ ДИВОТО</div>
           <Link to="/places" className="more">
