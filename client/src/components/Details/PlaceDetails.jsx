@@ -61,7 +61,7 @@ export default function PlaceDetails() {
               Научи повече <IoArrowForwardOutline />
             </Link>
           </div>
-          <img src="/public/leaf.png" alt="Leaf" />
+          <img src="/public/leaf.png" alt="Leaf" className="leaf"/>
         </div>
 
         <div className="info">

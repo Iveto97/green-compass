@@ -91,3 +91,79 @@
     margin-left: 10px;
     color: var(--deep-olive-green);
 }
+
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+    .card {
+        width: 270px;
+        height: 400px;
+    }
+
+    .image-holder {
+        width: 100%
+    }
+
+    .image-holder img {
+        width: 100%;
+    }
+
+    .text-holder h2 {
+        font-size: 20px;
+
+    }
+
+    .location-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .location {
+        font-size: 14px;
+    }
+
+    .information {
+        font-size: 14px;
+        margin-bottom: 14px;
+    }
+
+    .view-more {
+        margin-top: 10px;
+        margin-left: 100px;
+        font-size: 13px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+  .card {
+        width: 250px;
+        height: 400px;
+    }
+
+    .image-holder img {
+        width: 250px;
+    }
+
+    .text-holder h2 {
+        font-size: 20px;
+
+    }
+
+    .location-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .location {
+        font-size: 14px;
+    }
+
+    .information {
+        font-size: 14px;
+        margin-bottom: 14px;
+    }
+
+    .view-more {
+        margin-top: 10px;
+        margin-left: 100px;
+        font-size: 13px;
+    }
+}

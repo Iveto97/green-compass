@@ -78,9 +78,19 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 4fr;
+    justify-items: center;
 }
 
-@media only screen and (max-width: 992px) {
+@media (min-width: 993px) and (max-width: 1280px)  {
+       .cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 767px) and (max-width: 992px) {
+        .hero {
+        height: 500px;
+    }
     .parchment {
         width: 600px;
     }
@@ -91,13 +101,11 @@
     }
 
     .cards {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
-
-
 }
 
-@media only screen and (max-width: 768px) {
+/* @media only screen and (max-width: 768px) {
     .hero {
         height: 500px;
     }
@@ -105,10 +113,10 @@
     .cards {
         grid-template-columns: repeat(2, 1fr);
     }
-}
+} */
 
-@media screen and (max-width: 568px) {
-    .hero {
+@media (min-width: 600px) and (max-width: 767px) {
+     .hero {
         height: 400px;
     }
 
@@ -130,38 +138,29 @@
     .cards {
         grid-template-columns: repeat(2, 1fr);
     }
+}
 
-    .card {
-        width: 250px !important;
-        height: 400px !important;
+@media only screen and (max-width: 600px) {
+    .hero {
+        height: 400px;
     }
 
-    .image-holder img {
-        width: 250px !important;
+    .parchment {
+        width: 500px;
+        margin: 0px;
     }
 
-    .text-holder h2 {
-        font-size: 20px;
-
+    .parchment h1 {
+        font-size: 35px;
+        margin-top: 10px;
     }
 
-    .location-icon {
-        width: 20px;
-        height: 20px;
+    .parchment button {
+        padding: 10px;
+        width: 180px;
     }
 
-    .location {
-        font-size: 14px;
-    }
-
-    .information {
-        font-size: 14px;
-        margin-bottom: 14px;
-    }
-
-    .view-more {
-        margin-top: 10px !important;
-        margin-left: 100px !important;
-        font-size: 13px !important;
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
     }
 }

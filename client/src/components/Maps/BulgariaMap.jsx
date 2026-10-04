@@ -51,51 +51,58 @@ export default function BulgariaMap() {
       <h1>KАРТА НА БЪЛГАРИЯ</h1>
       <p>
         Открий най-красивите природни и исторически забележителности из цяла
-        България. <br /> Избери място и тръгни на приключение!{" "}
+        България.
       </p>
       <div className="map-container">
-        <div className="legend">
-          <h2>Легенда</h2>
-          <div className="legend-item">
-            <div className="marker-legend">
-              <img
-                src={waterfallPin}
-                alt="waterfall icon"
-                className="waterfall-icon"
-              />
-            </div>
+        <div className="info-map">
+          <div className="info-header-map">
+            <h2>
+              Легенда <hr className="gold-line" />
+            </h2>
+            <span class="eyebrow">ИЗБЕРИ МЯСТО И ТРЪГНИ НА ПРИКЛЮЧЕНИЕ</span>
+          </div>
+          <div className="legend">
+            <div className="legend-item">
+              <div className="marker-legend">
+                <img
+                  src={waterfallPin}
+                  alt="waterfall icon"
+                  className="waterfall-icon"
+                />
+              </div>
 
-            <span>Водопад</span>
-          </div>
-          <div className="legend-item">
-            <div className="marker-legend">
-              <img
-                src={archPin}
-                alt="waterfall icon"
-                className="waterfall-icon"
-              />
+              <span>Водопад</span>
             </div>
-            <span>Арка</span>
-          </div>
-          <div className="legend-item">
-            <div className="marker-legend">
-              <img
-                src={monumentPin}
-                alt="waterfall icon"
-                className="waterfall-icon"
-              />
+            <div className="legend-item">
+              <div className="marker-legend">
+                <img
+                  src={archPin}
+                  alt="waterfall icon"
+                  className="waterfall-icon"
+                />
+              </div>
+              <span>Арка</span>
             </div>
-            <span>Паметник</span>
-          </div>
-          <div className="legend-item">
-            <div className="marker-legend">
-              <img
-                src={churchPin}
-                alt="waterfall icon"
-                className="waterfall-icon"
-              />
+            <div className="legend-item">
+              <div className="marker-legend">
+                <img
+                  src={monumentPin}
+                  alt="waterfall icon"
+                  className="waterfall-icon"
+                />
+              </div>
+              <span>Паметник</span>
             </div>
-            <span>Манастир</span>
+            <div className="legend-item">
+              <div className="marker-legend">
+                <img
+                  src={churchPin}
+                  alt="waterfall icon"
+                  className="waterfall-icon"
+                />
+              </div>
+              <span>Манастир</span>
+            </div>
           </div>
         </div>
 

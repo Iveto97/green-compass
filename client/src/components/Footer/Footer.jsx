@@ -13,7 +13,7 @@ export default function Footer() {
         </div>
         <div className="footer-nav">
           <h2>Навигация</h2>
-          <ul>
+          <ul className="footer-nav-container">
             <li>
               <Link to="/">Начало</Link>
             </li>
