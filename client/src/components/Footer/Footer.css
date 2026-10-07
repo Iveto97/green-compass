@@ -7,12 +7,16 @@
 
 .footer-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     padding: 60px 20px 20px 20px;
 }
 
 .green {
+    display: flex;
+    margin-top: 40px;
     padding: 20px;
+    flex-direction: column;
+    justify-content: center
 }
 
 .green img {
@@ -26,7 +30,7 @@
     font-family: "Times New Roman", Times, serif;
     font-weight: 500;
     text-align: center;
-    font-size: 40px;
+    font-size: clamp(25px, 5vw, 40px);
     position: relative;
     top: -20px;
 }
@@ -34,7 +38,7 @@
 .green p {
     color: var(--pale-sandstone);
     font-family: "Times New Roman", Times, serif;
-    font-size: 20px;
+    font-size: clamp(15px, 5vw, 20px);
     margin: auto;
     text-align: center;
     position: relative;
@@ -74,10 +78,13 @@
     font-family: "Times New Roman", Times, serif;
     text-decoration: none;
     color: var(--pale-sandstone);
-    font-size: 25px;
+    font-size: clamp(15px, 4vw, 25px);
 }
 
 .footer-followUs {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     margin: auto;
 }
 
@@ -120,20 +127,21 @@
     align-items: center;
     flex-wrap: wrap;
 }
+
 .motto {
     display: flex;
     flex-direction: column;
     padding-bottom: 20px;
     position: relative;
     top: -70px;
-    margin: 30px 0;
+    margin: 30px auto;
 }
 
 .motto p:first-child {
     display: flex;
     justify-content: center;
     font-family: cursive;
-    font-size: 30px;
+    font-size: clamp(15px, 5vw, 30px);
     color: var(--pale-sandstone);
     padding: 20px 0px;
 }
@@ -151,25 +159,19 @@
 }
 
 @media (min-width: 993px) and (max-width: 1280px) {
-        .green img {
+    .green img {
         width: 350px;
         height: 250px;
-    }
-
-    
-    .green h1 {
-        font-size: 35px;
     }
 
     .green p {
         padding: 10px 20px 0 20px;
     }
 
-    .footer-nav-container li a {
-        font-size: 22px;
+    .footer-followUs {
+        grid-auto-flow: row;
     }
-
-        .followUs-icons svg {
+    .followUs-icons svg {
         width: 30px;
         height: 30px;
     }
@@ -186,15 +188,13 @@
         height: 200px;
     }
 
-    .green h1 {
-        font-size: 30px;
-    }
 
     .green p {
         padding: 10px 10px 0 10px;
     }
 
     .footer-followUs {
+        grid-auto-flow: row;
         margin-left: 20px;
     }
 
@@ -207,7 +207,8 @@
         font-size: 25px;
     }
 
-    .followUs h2, .contactUs h2 {
+    .followUs h2,
+    .contactUs h2 {
         font-size: 20px;
     }
 
@@ -223,114 +224,56 @@
         height: 150px;
     }
 
-    .green h1 {
-        font-size: 25px;
-    }
-
     .green p {
         padding: 10px 40px 0 40px;
-        font-size: 15px;
     }
 
     .footer-followUs {
-    margin: 50px auto auto 10px;
+        margin: 50px auto auto 10px;
     }
 
-    .followUs h2, .contactUs h2  {
-    font-size: 25px;
+    .followUs h2,
+    .contactUs h2 {
+        font-size: 25px;
     }
 
     .contactUs p address {
-    font-size: 15px;
+        font-size: 15px;
     }
 
     .followUs-icons svg {
         width: 25px;
         height: 25px;
     }
+
     .motto p:first-child {
-    font-size: 25px;
+        font-size: 25px;
     }
 }
 
-/* @media  (min-width: 601px) and (max-width: 767px) {
-     .green img {
-        width: 150px;
-        height: 100px;
-    }
-
-    .green h1 {
-        margin-top: 15px;
-        font-size: 20px;
-    }
-
-    .green p {
-        padding: 10px 0px 0 0px;
-        font-size: 15px;
-    }
-
-    .footer-nav h2 {
-        font-size: 20px;
-    }
-
-    .footer-nav ul li a {
-        font-size: 17px;
-    }
-
-    .followUs h2,
-    .contactUs h2 {
-        font-size: 20px;
-    }
-
-    .contactUs p address {
-        font-size: 15px;
-    }
-
-    .footer-followUs {
-        margin: 45px auto auto 10px;
-    }
-
-    .followUs-icons svg {
-        width: 20px;
-        height: 20px;
-    }
-
-    .footer-line img {
-        width: 100px;
-        height: 100px;
-    }
-
-    .motto p:first-child {
-        font-size: 20px;
-    }
-
-    .motto p:last-child {
-        font-size: 15px;
-    }
-} */
-
 @media only screen and (max-width: 600px) {
     .green img {
-        width: 150px;
-        height: 100px;
+        width: 290px;
+        height: 200px;
     }
 
     .green h1 {
         margin-top: 15px;
-        font-size: 15px;
     }
 
     .green p {
         padding: 10px 0px 0 0px;
-        font-size: 12px;
+    }
+
+    .footer-nav-container {
+        flex-direction: row;
+    }
+
+    .footer-nav {
+        margin-top: 0px;
     }
 
     .footer-nav h2 {
-        font-size: 15px;
-
-    }
-
-    .footer-nav ul li a {
         font-size: 15px;
 
     }
@@ -345,6 +288,8 @@
     }
 
     .footer-followUs {
+        grid-auto-flow: column;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
         margin: 45px auto auto 10px;
     }
 
@@ -356,10 +301,6 @@
     .footer-line img {
         width: 100px;
         height: 100px;
-    }
-
-    .motto p:first-child {
-        font-size: 20px;
     }
 
     .motto p:last-child {
