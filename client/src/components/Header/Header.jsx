@@ -9,7 +9,9 @@ export default function Header() {
 
     const [isOpen, setIsOpen] = useState(false);
 
-    const toggleHamburger = () => setIsOpen(!isOpen);
+    const toggleHamburger = () => {
+        setIsOpen(!isOpen);
+    }
 
     return (
         <header>
@@ -23,7 +25,7 @@ export default function Header() {
                                 </div>
                         </Link>
                     </div>
-                    <Navigation isOpen={isOpen} />
+                    <Navigation isOpen={isOpen} toggleMenu={toggleHamburger}/>
                     <div className="hamburger" onClick={toggleHamburger}>
                         <Hamburger isOpen={isOpen}/>
                     </div>

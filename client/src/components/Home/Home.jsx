@@ -20,7 +20,7 @@ export default function Home() {
               xmlns="http://www.w3.org/2000/svg"
               xmlnsXlink="http://www.w3.org/1999/xlink"
               viewBox="0 0 512.001 512.001"
-              xml:space="preserve"
+              xmlSpace="preserve"
               transform="rotate(45)"
               stroke="#1f4d3a"
             >

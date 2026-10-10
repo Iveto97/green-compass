@@ -47,7 +47,7 @@ export default function PlaceDetails() {
       <div className="for-place-container">
         <div className="for-place-info-container">
           <div className="for-place">
-            <span class="eyebrow">
+            <span className="eyebrow">
               ОТКРИЙ КРАСОТАТА НА БЪЛГАРИЯ <hr className="gold-line" />
             </span>
             <div className="for-place-header">
@@ -61,7 +61,7 @@ export default function PlaceDetails() {
               Научи повече <IoArrowForwardOutline />
             </Link>
           </div>
-          <img src="/public/leaf.png" alt="Leaf" className="leaf"/>
+          <img src="/leaf.png" alt="Leaf" className="leaf"/>
         </div>
 
         <div className="info">
@@ -69,7 +69,7 @@ export default function PlaceDetails() {
             <h3>
               Полезна информация <hr className="gold-line" />
             </h3>
-            <span class="eyebrow">МАЛКИ ДЕТАЙЛИ, ГОЛЕМИ ПРИКЛЮЧЕНИЯ </span>
+            <span className="eyebrow">МАЛКИ ДЕТАЙЛИ, ГОЛЕМИ ПРИКЛЮЧЕНИЯ </span>
           </div>
           <div className="information-container">
             <div className="practical-info">
@@ -412,8 +412,8 @@ export default function PlaceDetails() {
         </h2>
         <div className="gallery-grid">
           {gallery.length > 0
-            ? gallery.map((img) => {
-                return <img src={img} className="gallery-img" />;
+            ? gallery.map((img, index) => {
+                return <img src={img} className="gallery-img" key={index}/>;
               })
             : ""}
         </div>
@@ -424,7 +424,7 @@ export default function PlaceDetails() {
           <h3>
             Местоположение <hr className="gold-line" />
           </h3>
-          <span class="eyebrow">БЛИЗО ДО ПРИРОДАТА</span>
+          <span className="eyebrow">БЛИЗО ДО ПРИРОДАТА</span>
         </div>
         <div className="location-grid">
           <div className="location-map">
@@ -443,7 +443,7 @@ export default function PlaceDetails() {
         <div className="location-text">
           <div className="info-header mg">
             <h2>Как да стигнете</h2>
-            <span class="eyebrow">ПЪТЯТ Е ЧАСТ ОТ ПРИКЛЮЧЕНИЕТО </span>
+            <span className="eyebrow">ПЪТЯТ Е ЧАСТ ОТ ПРИКЛЮЧЕНИЕТО </span>
           </div>
 
           <div className="access-info">

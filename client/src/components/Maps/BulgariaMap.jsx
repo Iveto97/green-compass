@@ -9,6 +9,7 @@ import waterfallPin from "../../assets/markers/waterfallPin.svg";
 import archPin from "../../assets/markers/archPin.svg";
 import monumentPin from "../../assets/markers/monumentPin.svg";
 import churchPin from "../../assets/markers/churchPin.svg";
+import fossil from "../../assets/markers/fossil.svg";
 
 export default function BulgariaMap() {
   const markerIcon = {
@@ -16,6 +17,7 @@ export default function BulgariaMap() {
     арка: createMarker(archPin),
     паметник: createMarker(monumentPin),
     манастир: createMarker(churchPin),
+    археология: createMarker(fossil),
   };
 
   const placesData = getPlacesForMap();
@@ -35,8 +37,6 @@ export default function BulgariaMap() {
       attribution: "&copy; OpenStreetMap contributors",
       maxZoom: 19,
     }).addTo(map.current);
-
-    console.log(placesData);
 
     placesData.forEach((place) => {
       const category = place.category.toLowerCase();
@@ -59,7 +59,7 @@ export default function BulgariaMap() {
             <h2>
               Легенда <hr className="gold-line" />
             </h2>
-            <span class="eyebrow">ИЗБЕРИ МЯСТО И ТРЪГНИ НА ПРИКЛЮЧЕНИЕ</span>
+            <span className="eyebrow">ИЗБЕРИ МЯСТО И ТРЪГНИ НА ПРИКЛЮЧЕНИЕ</span>
           </div>
           <div className="legend">
             <div className="legend-item">
@@ -92,6 +92,16 @@ export default function BulgariaMap() {
                 />
               </div>
               <span>Паметник</span>
+            </div>
+            <div className="legend-item">
+              <div className="marker-legend">
+                <img
+                  src={fossil}
+                  alt="fossil icon"
+                  className="waterfall-icon"
+                />
+              </div>
+              <span>Археология</span>
             </div>
             <div className="legend-item">
               <div className="marker-legend">
