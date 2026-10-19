@@ -5,6 +5,7 @@ import Places from './components/Places/Places.jsx'
 import PlaceDetails from './components/Details/PlaceDetails.jsx'
 import Footer from './components/Footer/Footer.jsx'
 import BulgariaMap from './components/Maps/BulgariaMap.jsx'
+import Blog from './components/Blog/Blog.jsx'
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path='/places' element={<Places />}></Route>
           <Route path='/place/:placeId/details' element={<PlaceDetails />}></Route>
           <Route path='/map' element={<BulgariaMap />}></Route>
+          <Route path="/blog" element={<Blog />}></Route>
         </ Routes>
       </main>
       <Footer />

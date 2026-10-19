@@ -24,7 +24,7 @@ export default function Footer() {
               <Link to="/map">Карта</Link>
             </li>
             <li>
-              <Link to="#">Блог</Link>
+              <Link to="/blog">Блог</Link>
             </li>
             <li>
               <Link to="#">За проекта</Link>

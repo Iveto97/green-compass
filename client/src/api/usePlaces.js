@@ -8,6 +8,7 @@ export function getAllPlaces() {
     useEffect(() => {
        (async () => {
             const response = await getPlaces();
+
             setPlaces(response);
         })();
     }, []);
