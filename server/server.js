@@ -63,7 +63,6 @@ app.get("/places/map", async (req, res) => {
 
 
 app.get("/places/:id", async (req, res) => {
-    // console.log("ID ROUTE:", req.params.id);
    try {
       const { id } = req.params;
 
@@ -117,6 +116,38 @@ app.get('/articles', async (req, res) => {
          });
       }
 });
+
+app.get('/articles/:id', async (req, res) => {
+   try {
+      const { id } = req.params;
+
+      const result = await pool.query(
+         `
+            SELECT 
+            a.*,
+            ac.motto,
+            ac.intro,
+            ac.article
+
+            FROM articles a
+
+            JOIN article_content ac
+            on a.id = ac.article_id
+
+            WHERE a.id = $1
+
+         `, [id]
+      );
+
+      res.json(result.rows[0]);
+   } catch (error) {
+      console.log(error);
+
+      res.status(500).json({
+         error: "Server error"
+      });
+   }
+})
 
 const PORT = process.env.PORT || 3000;
 
