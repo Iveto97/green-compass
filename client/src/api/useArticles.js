@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getArticles } from "./articles.js";
+import { getArticles, getDetails } from "./articles.js";
 
 export function getAllArticles() {
     const [articles, setArticles] = useState([]);
@@ -13,3 +13,16 @@ export function getAllArticles() {
     
     return articles;
 };
+
+export function getArticleDetails(articleId) {
+    const [details, setDetails] = useState([]);
+
+    useEffect(() => {
+        (async () => {
+            const response = await getDetails(articleId);
+            setDetails(response);
+        })()
+    }, [articleId]);
+
+    return details;
+}
