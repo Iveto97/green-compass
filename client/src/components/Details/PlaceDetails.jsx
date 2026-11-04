@@ -2,7 +2,6 @@ import { Link, useParams } from "react-router-dom";
 import { getPlaceDetails } from "../../api/usePlaces";
 
 import "./PlaceDetails.css";
-import { useState } from "react";
 import Loader from "../Loader/Loader";
 import Map from "../Maps/Map.jsx";
 
@@ -59,9 +58,6 @@ export default function PlaceDetails() {
               <h2>За мястото</h2>
             </div>
             <p>{details.content}</p>
-            <Link to="#">
-              Научи повече <IoArrowForwardOutline />
-            </Link>
           </div>
           <img src="/leaf.png" alt="Leaf" className="leaf"/>
         </div>

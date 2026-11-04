@@ -1,6 +1,9 @@
 import { useEffect, useRef } from "react";
 
 import L, { Marker, Popup, TileLayer, MapContainer, marker } from "leaflet";
+import markerIcon from "leaflet/dist/images/marker-icon.png";
+import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
+import markerShadow from "leaflet/dist/images/marker-shadow.png";
 
 import "leaflet/dist/leaflet.css";
 
@@ -25,6 +28,16 @@ export default function Map({ placesData }) {
       attribution: "&copy; OpenStreetMap contributors",
       maxZoom: 19,
     }).addTo(map.current);
+
+    const defaultIcon = L.icon({
+  iconUrl: markerIcon,
+  iconRetinaUrl: markerIcon2x,
+  shadowUrl: markerShadow,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+});
+
+L.Marker.prototype.options.icon = defaultIcon;
 
     if (placesData && placesData.length > 1) {
       placesData.forEach((place) => {
