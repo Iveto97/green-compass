@@ -1,7 +1,7 @@
 .map-wrap {
    padding: 10px;
    position: relative;
-   z-index: 1;
+   /* z-index: 1; */
 }
 
 .map {
@@ -81,14 +81,15 @@
    box-shadow: inset 0 0 0 2px #b89a68,
       0 5px 15px rgba(0, 0, 0, 0.15);
    overflow: hidden;
-   z-index: 1;
+   /* z-index: 1; */
 }
 
 .bg-map {
    width: 100%;
    height: 100%;
    overflow: hidden;
-   border-radius: 18px;
+   z-index: 0;
+   /* border-radius: 18px; */
 }
 
 .marker-pin {

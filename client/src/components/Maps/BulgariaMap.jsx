@@ -19,7 +19,6 @@ export default function BulgariaMap() {
     манастир: createMarker(churchPin),
     археология: createMarker(fossil),
   };
-
   const placesData = getPlacesForMap();
 
   const mapContainer = useRef(null);

@@ -4,7 +4,7 @@ import { getPlaceDetails } from "../../api/usePlaces";
 import "./PlaceDetails.css";
 import { useState } from "react";
 import Loader from "../Loader/Loader";
-import Map from "../Maps/PlaceMap.jsx";
+import Map from "../Maps/Map.jsx";
 
 import { GiTreeBranch } from "react-icons/gi";
 import { IoArrowForwardOutline, IoLocation } from "react-icons/io5";
@@ -23,6 +23,8 @@ export default function PlaceDetails() {
 
   const gallery = details.gallery;
 
+  console.log(details);
+  
   return (
     <section className="details-section">
       <div className="details-hero">
@@ -428,7 +430,7 @@ export default function PlaceDetails() {
         </div>
         <div className="location-grid">
           <div className="location-map">
-            <Map coordinates={details.coordinates} />
+            <Map placesData={[{coordinates: details.coordinates, "place_name": details.name}]} />
           </div>
           <div className="to-map">
             <span className="map-location-icon">
