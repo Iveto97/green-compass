@@ -1,6 +1,7 @@
 import { get } from "./requester.js";
 
 const ARTICLES_API_URL = 'https://green-compass.onrender.com/articles';
+// 'https://green-compass.onrender.com/articles'
 /*'http://localhost:3000/articles'*/ 
 export const getArticles = async () => {
     const response = await get(ARTICLES_API_URL);
@@ -9,5 +10,10 @@ export const getArticles = async () => {
 
 export const getDetails = async (articleId) => {
     const response = await get(`${ARTICLES_API_URL}/${articleId}`);
+    return response;
+}
+
+export const getPlacesForArticle = async (articleId) => {
+    const response = await get(`${ARTICLES_API_URL}/${articleId}/places`);
     return response;
 }

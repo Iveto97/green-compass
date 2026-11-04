@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getArticles, getDetails } from "./articles.js";
+import { getArticles, getDetails, getPlacesForArticle } from "./articles.js";
 
 export function getAllArticles() {
     const [articles, setArticles] = useState([]);
@@ -25,4 +25,16 @@ export function getArticleDetails(articleId) {
     }, [articleId]);
 
     return details;
+}
+
+export function  getArticlePlaces(articleId) {
+    const [ places , setPlaces] = useState([]);
+    useEffect(() => {
+        (async () => {
+            const response = await getPlacesForArticle(articleId);
+            setPlaces(response);
+        })()
+    }, [articleId]);
+
+    return places;
 }
