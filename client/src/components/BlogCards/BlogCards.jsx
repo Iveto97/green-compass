@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 
 import "./BlogCards.css";
 
+import { BsCalendar2Date } from "react-icons/bs";
+
 
 const BlogCards = ({ id, title, category, content, created_at, image, excerpt }) => {
 
@@ -15,13 +17,8 @@ const BlogCards = ({ id, title, category, content, created_at, image, excerpt })
         <img src={image} alt="" className="blog-img"/>
       </div>
       <div className="blog-card-content">
-        <span className="blog-card-date">{date.getDate()}{' '}{months[date.getMonth()]}{' '}{date.getFullYear()}</span>
-        <h3 className="blog-card-title">{title}</h3>
-        <div>
-                  <p className="blog-card-description">{excerpt}</p>
-        <Link to={`/blog/${id}/details`} className="blog-card-btn">Прочети повече</Link>
-        </div>
-
+        <Link to={`/blog/${id}/details`} className="blog-card-link"><h3 className="blog-card-title">{title}</h3></Link>
+        <span className="blog-card-date"><BsCalendar2Date />{date.getDate()}{' '}{months[date.getMonth()]}{' '}{date.getFullYear()}</span>
       </div>
     </div>
   );
