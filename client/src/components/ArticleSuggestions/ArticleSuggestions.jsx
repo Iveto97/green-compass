@@ -1,11 +1,16 @@
 import { useEffect, useRef } from "react";
-import { getAllArticles } from "../../api/useArticles";
 import "./ArticleSuggestions.css";
 import { Link } from "react-router-dom";
+import { useData } from "../../context/DataContext";
 
 export default function ArticleSuggestions() {
-  const allArticles = getAllArticles();
-  const lastArticlesId = Object.keys(allArticles).reverse().slice(0, 3);
+  const { articles, fetchArticles } = useData();
+
+  useEffect(() => {
+    fetchArticles();
+  }, []);
+
+  const lastArticlesId = Object.keys(articles).reverse().slice(0, 3);
 
   const createDate = (createdDate) => {
     const months = [
@@ -45,19 +50,19 @@ export default function ArticleSuggestions() {
           <div className="article-suggestion" key={articleId}>
             <img
               className="article-suggestions-image"
-              src={allArticles[articleId]?.image}
-              alt={allArticles[articleId]?.title}
+              src={articles[articleId]?.image}
+              alt={articles[articleId]?.title}
             />
             <div className="article-suggestions-text">
               <Link
-                to={`/blog/${allArticles[articleId]?.id}/details`}
+                to={`/blog/${articles[articleId]?.id}/details`}
                 className="article-suggestions-name"
               >
-                {allArticles[articleId]?.title}
+                {articles[articleId]?.title}
               </Link>
               <span className="article-suggestions-date">
-                {allArticles[articleId]?.created_at
-                  ? createDate(allArticles[articleId]?.created_at)
+                {articles[articleId]?.created_at
+                  ? createDate(articles[articleId]?.created_at)
                   : ""}
               </span>
             </div>

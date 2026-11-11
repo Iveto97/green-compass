@@ -1,4 +1,3 @@
-import { getArticleDetails, getArticlePlaces } from "../../api/useArticles.js";
 import { useParams } from "react-router-dom";
 import "./Articles.css";
 import ArticleSuggestions from "../ArticleSuggestions/ArticleSuggestions.jsx";
@@ -6,14 +5,22 @@ import Map from "../Maps/Map.jsx";
 
 import { IoLocationSharp } from "react-icons/io5";
 import { GiVanillaFlower } from "react-icons/gi";
+import { useData } from "../../context/DataContext.jsx";
+import { useEffect } from "react";
 
 export default function Article() {
-  const id = useParams();
+  const { articleId } = useParams();
 
-  const articleDest = getArticleDetails(id.articleId);
-  const arContent = articleDest.article;
+  const { articleDetails, fetchArticleDetails, placesForArticle, fetchArticlePlaces } = useData();
 
-  const places = getArticlePlaces(id.articleId);
+  useEffect(() => {
+    if (!articleId) return;
+
+    fetchArticleDetails(articleId);
+    fetchArticlePlaces(articleId);
+  }, []);
+
+  const arContent = articleDetails.article;
 
   const sectionOrder = ["one", "two", "three", "four", "five"];
 
@@ -26,20 +33,20 @@ export default function Article() {
       <div className="article-heading">
         <div className="article-heading-container">
           <span className="article-header-category">
-            {articleDest.category}
+            {articleDetails.category}
           </span>
-          <h1 className="article-header-title">{articleDest.title}</h1>
-          <p className="article-header-para">{articleDest.motto}</p>
+          <h1 className="article-header-title">{articleDetails.title}</h1>
+          <p className="article-header-para">{articleDetails.motto}</p>
         </div>
       </div>
       <div className="article-body">
         <div className="article-body-text">
           <div className="article-intro-container">
-            <p className="article-intro-para">{articleDest.intro}</p>
+            <p className="article-intro-para">{articleDetails.intro}</p>
           </div>
           <div className="article-text">
             <div>
-              <h3 className="article-text-header">{arContent?.one.header}</h3>
+              <h3 className="article-text-header" id="one">{arContent?.one.header}</h3>
               {arContent?.one.content.map((text, index) => (
                 <p className="article-text-para" key={`one-${index}`}>
                   {text}
@@ -47,29 +54,29 @@ export default function Article() {
               ))}
             </div>
             <div className="article-image-container">
-              {articleDest["content_img"] &&
-                articleDest["content_img"].length > 1 && (
+              {articleDetails["content_img"] &&
+                articleDetails["content_img"].length > 1 && (
                   <img
                     className="article-image"
-                    src={articleDest["content_img"][0]}
-                    alt={articleDest.title}
+                    src={articleDetails["content_img"][0]}
+                    alt={articleDetails.title}
                   />
                 )}
             </div>
           </div>
           <div className="article-text reverced">
             <div className="article-image-container">
-              {articleDest["content_img"] &&
-                articleDest["content_img"].length > 1 && (
+              {articleDetails["content_img"] &&
+                articleDetails["content_img"].length > 1 && (
                   <img
                     className="article-image"
-                    src={articleDest["content_img"][1]}
-                    alt={articleDest.title}
+                    src={articleDetails["content_img"][1]}
+                    alt={articleDetails.title}
                   />
                 )}
             </div>
             <div>
-              <h3 className="article-text-header">{arContent?.two.header}</h3>
+              <h3 className="article-text-header" id="two">{arContent?.two.header}</h3>
               {arContent?.two.content.map((text, index) => (
                 <p className="article-text-para" key={`two-${index}`}>
                   {text}
@@ -79,7 +86,7 @@ export default function Article() {
           </div>
           <div className="article-text">
             <div>
-              <h3 className="article-text-header">{arContent?.three.header}</h3>
+              <h3 className="article-text-header" id="three">{arContent?.three.header}</h3>
               {arContent?.three.content.map((text, index) => (
                 <p className="article-text-para" key={`three-${index}`}>
                   {text}
@@ -87,12 +94,12 @@ export default function Article() {
               ))}
             </div>
             <div className="article-image-container">
-              {articleDest["content_img"] &&
-                articleDest["content_img"].length > 1 && (
+              {articleDetails["content_img"] &&
+                articleDetails["content_img"].length > 1 && (
                   <img
                     className="article-image"
-                    src={articleDest["content_img"][2]}
-                    alt={articleDest.title}
+                    src={articleDetails["content_img"][2]}
+                    alt={articleDetails.title}
                   />
                 )}
             </div>
@@ -108,11 +115,11 @@ export default function Article() {
               {sortedSections ? (
                 sortedSections.map(([section, content]) => (
                   <li className="article-content-li" key={`content-${section}`}>
-                    {content.header}
+                    <a className="article-content-link" href={`#${section}`}>{content.header}</a>
                   </li>
                 ))
               ) : (
-                <li>Loading content...</li>
+                <li>Зареждане на съдържанието...</li>
               )}
             </ol>
           </div>
@@ -122,16 +129,16 @@ export default function Article() {
               Къде се намират тези места?
             </h2>
             <div className="map-holder">
-              {places && places.length > 0 ? (
-                <Map placesData={places} />
+              {placesForArticle && placesForArticle.length > 0 ? (
+                <Map placesData={placesForArticle} />
               ) : (
-                <p>Loading map...</p>
+                <p>Зареждане на картата...</p>
               )}
             </div>
             <div>
               <ul className="article-map-places">
-                {places && places.length > 0 ? (
-                  places.map((place) => (
+                {placesForArticle && placesForArticle.length > 0 ? (
+                  placesForArticle.map((place) => (
                     <li className="map-places-list" key={place["place_id"]}>
                       <IoLocationSharp />
                       {place["place_name"]}
@@ -149,7 +156,7 @@ export default function Article() {
         </div>
       </div>
       <div className="article-info">
-        <h3 className="article-text-header">{arContent?.four.header}</h3>
+        <h3 className="article-text-header" id="four">{arContent?.four.header}</h3>
         <div className="article-practicle-container">
           {Object.entries(arContent?.four?.content ?? {}).map(
             ([title, text]) => (
@@ -163,7 +170,7 @@ export default function Article() {
       </div>
       <div className="article-text">
         <div>
-          <h3 className="article-text-header">{arContent?.five.header}</h3>
+          <h3 className="article-text-header" id="five">{arContent?.five.header}</h3>
           {arContent?.five.content.map((text, index) => (
             <p className="article-text-para" key={`five-${index}`}>
               {text}
@@ -171,12 +178,12 @@ export default function Article() {
           ))}
         </div>
         <div className="article-image-container">
-          {articleDest["content_img"] &&
-            articleDest["content_img"].length > 1 && (
+          {articleDetails["content_img"] &&
+            articleDetails["content_img"].length > 1 && (
               <img
                 className="article-image"
-                src={articleDest["content_img"][3]}
-                alt={articleDest.title}
+                src={articleDetails["content_img"][3]}
+                alt={articleDetails.title}
               />
             )}
         </div>

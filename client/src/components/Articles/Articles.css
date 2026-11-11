@@ -187,10 +187,15 @@
 
 .article-content-li {
     list-style-type: decimal;
-    font-family: 'Times New Roman', Times, serif;
     font-size: 22px;
     color: var(--dark-cyan);
     cursor: pointer;
+}
+
+.article-content-link {
+    text-decoration: none;
+    color: var(--dark-cyan);
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .map-holder {
