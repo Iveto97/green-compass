@@ -1,4 +1,5 @@
 .blog {
+
     width: 100%;
     height: 100%;
     background-color: var(--nav-background);
@@ -86,18 +87,95 @@
     margin: 20px 5px;
 }
 
+.blog-content-container {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(2, 60% 40%);
+}
+
+.last-added-header {
+    font-size: 22px;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 1rem 2rem;
+}
+
+.last-article-container {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(2, 50% 50%);
+    width: 90%;
+    height: 350px;
+    margin-left: 2rem;
+    background: rgba(255, 255, 255, .4);
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.20);
+}
+
+.last-article-image-container {
+}
+
+.last-article-image {
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.last-article-content-container {
+    padding:30px;
+}
+
+.last-article-header {
+    font-size: 22px;
+    font-family: 'Times New Roman', Times, serif;
+    margin-bottom: 1rem;
+}
+
+.last-article-para {
+    color: var(--muted);
+    line-height: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.last-article-button {
+    text-decoration: none;
+    color: var(--white);
+    background: var(--green-dark);
+    padding: 10px;
+    border-radius: 20px;
+}
+
+
 .blog-cards {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 20px;
     flex-wrap: wrap;
-    padding: 10px;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    margin-left: 2rem;
 }
 
 .no-articles {
     font-size: 20px;
     font-family: Georgia, serif;
     color: var(--green-dark);
+    text-align: center;
+}
+
+.blog-additions {
+    width: 100%;
+}
+
+.blog-addition {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 2rem auto;
+    padding: 1rem;
+    max-width: 80%;
+    background-color: rgba(111, 159, 103, .1);
+    border-radius: 20px;
 }
 
 /* Extra small devices (phones, 600px and down) */

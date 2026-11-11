@@ -1,12 +1,15 @@
-import { Route, Routes } from 'react-router-dom'
-import Header from './components/Header/Header.jsx'
-import Home from './components/Home/Home.jsx'
-import Places from './components/Places/Places.jsx'
-import PlaceDetails from './components/Details/PlaceDetails.jsx'
-import Footer from './components/Footer/Footer.jsx'
-import BulgariaMap from './components/Maps/BulgariaMap.jsx'
-import Blog from './components/Blog/Blog.jsx'
-import Article from './components/Articles/Articles.jsx'
+import { Route, Routes } from 'react-router-dom';
+
+import { DataProvider } from './context/DataContext.jsx';
+
+import Header from './components/Header/Header.jsx';
+import Home from './components/Home/Home.jsx';
+import Places from './components/Places/Places.jsx';
+import PlaceDetails from './components/Details/PlaceDetails.jsx';
+import Footer from './components/Footer/Footer.jsx';
+import BulgariaMap from './components/Maps/BulgariaMap.jsx';
+import Blog from './components/Blog/Blog.jsx';
+import Article from './components/Articles/Articles.jsx';
 
 
 function App() {
@@ -15,6 +18,7 @@ function App() {
     <div id='box'>
       <Header />
       <main id="main-content">
+        <DataProvider>
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path='/places' element={<Places />}></Route>
@@ -23,6 +27,7 @@ function App() {
           <Route path="/blog" element={<Blog />}></Route>
           <Route path='/blog/:articleId/details' element={<Article />}></Route>
         </ Routes>
+        </DataProvider>
       </main>
       <Footer />
     </div>

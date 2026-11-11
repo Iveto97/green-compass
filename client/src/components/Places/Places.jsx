@@ -2,13 +2,13 @@ import "./Places.css";
 
 
 import Card from "../Cards/Cards.jsx";
-import { getAllPlaces } from "../../api/usePlaces.js";
 
 import { GiThreeLeaves } from "react-icons/gi";
+import { useData } from "../../context/DataContext.jsx";
 
 export default function Places() {
 
-  const places =  getAllPlaces();
+  const {places, setPlaces} = useData();
 
   return (
     <section className="places">

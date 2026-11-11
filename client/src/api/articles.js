@@ -8,7 +8,7 @@ export const getArticles = async () => {
     return response;
 };
 
-export const getDetails = async (articleId) => {
+export const getArticleDetails = async (articleId) => {
     const response = await get(`${ARTICLES_API_URL}/${articleId}`);
     return response;
 }

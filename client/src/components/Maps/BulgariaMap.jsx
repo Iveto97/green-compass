@@ -1,10 +1,13 @@
+import { useEffect, useRef } from "react";
+
 import L, { Marker, Popup, TileLayer, MapContainer, marker } from "leaflet";
+
+import { useData } from "../../context/DataContext";
+import { createMarker } from "../../utils/createMarker";
 
 import "leaflet/dist/leaflet.css";
 import "./Maps.css";
-import { getPlacesForMap } from "../../api/usePlaces";
-import { useEffect, useRef } from "react";
-import { createMarker } from "../../utils/createMarker";
+
 import waterfallPin from "../../assets/markers/waterfallPin.svg";
 import archPin from "../../assets/markers/archPin.svg";
 import monumentPin from "../../assets/markers/monumentPin.svg";
@@ -18,14 +21,20 @@ export default function BulgariaMap() {
     паметник: createMarker(monumentPin),
     манастир: createMarker(churchPin),
     археология: createMarker(fossil),
+    нос: createMarker(monumentPin),
   };
-  const placesData = getPlacesForMap();
+
+  const { mapPlaces, fetchPlacesForMap } = useData();
+
+  useEffect(() => {
+    fetchPlacesForMap();
+  }, [fetchPlacesForMap]);
 
   const mapContainer = useRef(null);
   const map = useRef(null);
 
   useEffect(() => {
-    if (map.current || !placesData.length) return;
+    if (map.current || !mapPlaces.length) return;
 
     map.current = L.map(mapContainer.current, {
       center: [42.766, 25.238],
@@ -37,13 +46,13 @@ export default function BulgariaMap() {
       maxZoom: 19,
     }).addTo(map.current);
 
-    placesData.forEach((place) => {
+    mapPlaces.forEach((place) => {
       const category = place.category.toLowerCase();
       L.marker(place.coordinates, { icon: markerIcon[category] })
         .bindPopup(place.name)
         .addTo(map.current);
     });
-  }, [placesData]);
+  }, [mapPlaces]);
 
   return (
     <section id="bg-map" className="bg-map-section">
