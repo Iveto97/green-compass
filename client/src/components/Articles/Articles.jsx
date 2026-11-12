@@ -28,6 +28,8 @@ export default function Article() {
     .filter((section) => arContent?.[section])
     .map((section) => [section, arContent[section]]);
 
+    
+
   return (
     <div className="article-section">
       <div className="article-heading">

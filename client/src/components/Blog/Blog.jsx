@@ -5,7 +5,7 @@ import { FaArchway } from "react-icons/fa6";
 import { PiBinoculars } from "react-icons/pi";
 
 import "./Blog.css";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import CategoryDropdown from "../CategoryDropdown/CategoryDropdown";
 import { Link } from "react-router-dom";
 import Search from "../Search/Search";
@@ -14,12 +14,13 @@ import { useData } from "../../context/DataContext";
 const Blog = () => {
   const [sortedArticles, setSortedArticles] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("Всички");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const { articles, fetchArticles } = useData();
 
   useEffect(() => {
     fetchArticles();
-  }, [])
+  }, []);
 
   const lastArticle = articles.slice(-1);
 
@@ -33,6 +34,13 @@ const Blog = () => {
       setSortedArticles(filteredArticles);
     }
   }, [selectedCategory, articles]);
+
+  const handleSearch = useMemo(() => {
+    const sortedAr = articles.filter((article) => {
+      return article.title.toLowerCase().includes(searchQuery.toLowerCase());
+    });
+    setSortedArticles(sortedAr)
+  }, [searchQuery]);
 
   return (
     <div className="blog">
@@ -139,7 +147,7 @@ const Blog = () => {
         <div className="blog-additions">
           <div className="blog-addition">
             <h2 className="blog-addition-header">Търси в блога</h2>
-            <Search />
+            <Search onSearch={setSearchQuery} />
           </div>
         </div>
       </div>

@@ -4,29 +4,23 @@ import "./Search.css";
 import { FaSearch } from "react-icons/fa";
 import { useData } from "../../context/DataContext";
 
-export default function Search() {
+export default function Search({ onSearch }) {
   const { articles } = useData();
   
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchValue, setSearchValue] = useState("");
 
   const handleSearch = (event) => {
     event.preventDefault();
-    const query = searchQuery.trim().toLocaleLowerCase();
-
-    articles.filter((article) => {
-      const title = article.title.toLocaleLowerCase();
-      if (title.includes(query)) {
-        console.log(article);
-      }
-    });
+    onSearch(searchValue);
   }
+  
     return (
       <div className="search-container">
         <input
           className="search-input"
           type="text"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
           placeholder="Търси..."
         />
         <button className="search-button" onClick={(e) => handleSearch(e)}>
