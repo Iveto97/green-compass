@@ -8,7 +8,7 @@ import L from "leaflet";
                 <img src="${iconUrl}" alt="marker icon" />
             </div>
         `,
-              iconSize: [50, 50],
+        iconSize: [50, 50],
         iconAnchor: [25, 50],
         popupAnchor: [0, -50]
     });

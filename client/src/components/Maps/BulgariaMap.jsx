@@ -13,6 +13,9 @@ import archPin from "../../assets/markers/archPin.svg";
 import monumentPin from "../../assets/markers/monumentPin.svg";
 import churchPin from "../../assets/markers/churchPin.svg";
 import fossil from "../../assets/markers/fossil.svg";
+import cave from "../../assets/markers/cave.svg";
+import palace from "../../assets/markers/palace.svg";
+
 
 export default function BulgariaMap() {
   const markerIcon = {
@@ -22,6 +25,9 @@ export default function BulgariaMap() {
     манастир: createMarker(churchPin),
     археология: createMarker(fossil),
     нос: createMarker(monumentPin),
+    история: createMarker(monumentPin),
+    пещера: createMarker(cave),
+    култура: createMarker(palace),
   };
 
   const { mapPlaces, fetchPlacesForMap } = useData();
