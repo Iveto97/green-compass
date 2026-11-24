@@ -1,20 +1,30 @@
 import BlogCards from "../BlogCards/BlogCards";
 
-import { GiMonsteraLeaf, GiMountainRoad } from "react-icons/gi";
-import { FaArchway } from "react-icons/fa6";
-import { PiBinoculars } from "react-icons/pi";
-
 import "./Blog.css";
 import { useEffect, useMemo, useState } from "react";
 import CategoryDropdown from "../CategoryDropdown/CategoryDropdown";
 import { Link } from "react-router-dom";
 import Search from "../Search/Search";
 import { useData } from "../../context/DataContext";
+import ButtonFilter from "../ButtonFilter/ButtonFilter";
+import filterData from "../../utils/filterData";
+
+import { BsFillTreeFill, BsBank } from "react-icons/bs";
+import { GiWhiteTower, GiWaterfall, GiMountainCave  } from "react-icons/gi";
+import { FaChurch, FaMonument } from "react-icons/fa";
+import { IoIosMenu } from "react-icons/io";
+
+import { GiMonsteraLeaf, GiMountainRoad } from "react-icons/gi";
+import { FaArchway } from "react-icons/fa6";
+import { PiBinoculars } from "react-icons/pi";
 
 const Blog = () => {
   const [sortedArticles, setSortedArticles] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("Всички");
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState({
+    searchTerm: "",
+    category: ["Всички"],
+    region: "Всички"
+  });
 
   const { articles, fetchArticles } = useData();
 
@@ -22,25 +32,35 @@ const Blog = () => {
     fetchArticles();
   }, []);
 
+  const categoryIcons = {
+    "Всички": <IoIosMenu className="filter-icon" />,
+    "Природа": <BsFillTreeFill className="filter-icon" />,
+    "История": <GiWhiteTower className="filter-icon"/>,
+    "Манастир": <FaChurch className="filter-icon"/>,
+    "Култура": <BsBank className="filter-icon"/>,
+    "Паметник": <FaMonument className="filter-icon"/>,
+    "Водопад": <GiWaterfall className="filter-icon"/>,
+    "Пещера": <GiMountainCave className="filter-icon"/>,
+  };
+
+  const buttonIcons = {
+    "Всички": <IoIosMenu className="filter-icon" />,
+    "Природа": <GiMonsteraLeaf className="filter-icon" />,
+    "История": <FaArchway className="filter-icon"/>,
+    "Маршрути": <GiMountainRoad className="filter-icon"/>,
+    "Скрити места": <PiBinoculars className="filter-icon"/>,
+  }
+
   const lastArticle = articles.slice(-1);
 
   useEffect(() => {
-    if (selectedCategory === "Всички") {
-      setSortedArticles(articles);
-    } else {
-      const filteredArticles = articles.filter(
-        (article) => article.category === selectedCategory,
-      );
-      setSortedArticles(filteredArticles);
-    }
-  }, [selectedCategory, articles]);
+    const filteredArticles = filterData(articles, searchQuery);
+    console.log(filteredArticles);
+    
+    setSortedArticles(filteredArticles);
+  }, [searchQuery, articles]);
 
-  const handleSearch = useMemo(() => {
-    const sortedAr = articles.filter((article) => {
-      return article.title.toLowerCase().includes(searchQuery.toLowerCase());
-    });
-    setSortedArticles(sortedAr)
-  }, [searchQuery]);
+  // const searchArticles = filterData(articles, searchQuery);
 
   return (
     <div className="blog">
@@ -54,55 +74,13 @@ const Blog = () => {
           </p>
         </div>
       </div>
-      <div className="blog-categories">
-        <div className="blog-category">
-          <button
-            className="blog-btn"
-            onClick={() => setSelectedCategory("Всички")}
-          >
-            Всички
-          </button>
-        </div>
-        <div className="blog-category">
-          <button
-            className="blog-btn"
-            onClick={() => setSelectedCategory("Природа")}
-          >
-            <GiMonsteraLeaf />
-            Природа
-          </button>
-        </div>
-        <div className="blog-category">
-          <button
-            className="blog-btn"
-            onClick={() => setSelectedCategory("История")}
-          >
-            <FaArchway />
-            История
-          </button>
-        </div>
-        <div className="blog-category">
-          <button
-            className="blog-btn"
-            onClick={() => setSelectedCategory("Маршрути")}
-          >
-            <GiMountainRoad />
-            Маршрути
-          </button>
-        </div>
-        <div className="blog-category">
-          <button
-            className="blog-btn"
-            onClick={() => setSelectedCategory("Скрити места")}
-          >
-            <PiBinoculars />
-            Скрити места
-          </button>
-        </div>
+      <div className="blog-filter">
+        <ButtonFilter value={searchQuery} onClick={setSearchQuery} options={buttonIcons} />
         <div className="option-category-container">
           <CategoryDropdown
-            value={selectedCategory}
-            onChange={setSelectedCategory}
+            value={searchQuery}
+            onChange={setSearchQuery}
+            options={categoryIcons}
           />
         </div>
       </div>
@@ -147,7 +125,7 @@ const Blog = () => {
         <div className="blog-additions">
           <div className="blog-addition">
             <h2 className="blog-addition-header">Търси в блога</h2>
-            <Search onSearch={setSearchQuery} />
+            <Search value={searchQuery} onSearch={setSearchQuery} />
           </div>
         </div>
       </div>
