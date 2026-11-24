@@ -16,9 +16,9 @@
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   font: 1.2em sans-serif;
-
   display: flex;
   justify-content: center;
+  z-index: 1;
 }
 
 .pagination {

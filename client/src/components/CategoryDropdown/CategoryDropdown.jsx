@@ -2,30 +2,12 @@ import { useState } from "react";
 
 import "./CategoryDropdown.css";
 
-import { IoIosMenu } from "react-icons/io";
 import { GiCheckMark } from "react-icons/gi";
-import { GiMonsteraLeaf, GiMountainRoad } from "react-icons/gi";
-import { FaArchway } from "react-icons/fa6";
-import { PiBinoculars } from "react-icons/pi";
 
-export default function CategoryDropdown({ value, onChange }) {
+export default function CategoryDropdown({ value, onChange, options }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const categoryIcons = {
-    Всички: <IoIosMenu />,
-    Природа: <GiMonsteraLeaf />,
-    История: <FaArchway />,
-    Маршрути: <GiMountainRoad />,
-    "Скрити места": <PiBinoculars />,
-  };
-
-  const categories = [
-    "Всички",
-    "Природа",
-    "История",
-    "Маршрути",
-    "Скрити места",
-  ];
+  const optionKeys = Object.keys(options);
 
   return (
     <div className="category-dropdown">
@@ -37,9 +19,9 @@ export default function CategoryDropdown({ value, onChange }) {
         onClick={() => setIsOpen(!isOpen)}
       >
         <span className="category-dropdown__menu-icon">
-          <IoIosMenu />
+          {options[value.region]}
         </span>
-        <span>{value}</span>
+        <span>{value.region}</span>
         <span
           className={`category-dropdown__chevron ${isOpen ? "is-open" : ""}`}
         ></span>
@@ -50,24 +32,24 @@ export default function CategoryDropdown({ value, onChange }) {
           role="listbox"
           aria-label="Избери категория"
         >
-          {categories.map((category) => (
-            <li key={category}>
+          {optionKeys.map((option) => (
+            <li key={option}>
               <button
                 type="button"
                 role="option"
                 className={`category-dropdown__option ${
-                  value === category ? "is-selected" : ""
+                  value.region === option ? "is-selected" : ""
                 }`}
-                onClick={() => {
-                    onChange(category);
+                onClick={() => {            
+                    onChange({ ...value,  region : option });
                     setIsOpen(false);
                 }}
-                aria-selected={value === category}
+                aria-selected={value.region === option}
               >
-                <span>{categoryIcons[category]}</span>
+                <span>{options[option]}</span>
 
-                <span>{category}</span>
-                {value === category && (
+                <span>{option}</span>
+                {value.region === option && (
                   <span aria-hidden="true">
                     <GiCheckMark />
                   </span>

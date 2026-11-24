@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import L, { Marker, Popup, TileLayer, MapContainer, marker } from "leaflet";
 
 import { useData } from "../../context/DataContext";
-import { createMarker } from "../../utils/createMarker";
+import { createMarker } from "../../utils/createMarker.js";
 
 import "leaflet/dist/leaflet.css";
 import "./Maps.css";
@@ -28,6 +28,7 @@ export default function BulgariaMap() {
     история: createMarker(monumentPin),
     пещера: createMarker(cave),
     култура: createMarker(palace),
+    природа: createMarker(palace),
   };
 
   const { mapPlaces, fetchPlacesForMap } = useData();

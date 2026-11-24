@@ -48,6 +48,12 @@
     background-color: var(--muted-green);
 }
 
+.places-content {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(2, 30% 70%);
+}
+
 .cards-container h1 {
     margin: 15px 0 0 20px;
     color: var(--deep-olive-green);
@@ -79,6 +85,12 @@
     grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
     grid-template-rows: 4fr;
     justify-items: center;
+}
+
+.no-places {
+    font-size: 1.5rem;
+    color: var(--dark-green);
+    margin: 2rem auto;
 }
 
 @media (min-width: 993px) and (max-width: 1280px)  {
