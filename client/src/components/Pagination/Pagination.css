@@ -39,6 +39,7 @@
   border: 1px solid #999999;
   border-radius: 0.2em;
   text-decoration: none;
+  color: #333333;
 }
 
 .pagination a[aria-current="page"] {
