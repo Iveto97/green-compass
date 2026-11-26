@@ -1,15 +1,16 @@
-
 :root {
   --nav-background: #f7f0e3;
-  --green-dark: #173d2a;  
-    --green: #315d42;
-    --green-light: #e6ecd9;
-    --white: #ffffff;
-    --gold: #c49a4a;
-    --text: #26352d;
-    --muted: #7b8078;
+  --green-dark: #173d2a;
+  --green: #315d42;
+  --green-light: #e6ecd9;
+  --white: #ffffff;
+  --gold: #c49a4a;
+  --text: #26352d;
+  --muted: #7b8078;
 
-    --font-georgia: Georgia, serif;
+  --font-georgia: Georgia, serif;
+  --font-heading: "Lora", serif;
+  --font-body: "Manrope", sans-serif;
 
   --dark-lime-green: #6f9f67;
   --dark-green: #5b8554;
@@ -29,7 +30,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Rubik', sans-serif;
+  font-family: var(--font-body);
 }
 
 .container {
@@ -39,10 +40,10 @@
 }
 
 .location-icon {
-    width: 24px;
-    height: 24px;
-    color: var(--dark-green);
-    margin: 0 5px 0px 10px;
+  width: 24px;
+  height: 24px;
+  color: var(--dark-green);
+  margin: 0 5px 0px 10px;
 }
 
 @keyframes animate {
@@ -56,9 +57,7 @@
   }
 }
 
-@media screen and (max-width: 1280px) {
-
-}
+@media screen and (max-width: 1280px) {}
 
 @media screen and (max-width: 992px) {
 
@@ -80,7 +79,7 @@
     transition: 0.5s ease-in;
   }
 
- .menu-nav ul li a {
+  .menu-nav ul li a {
     font-size: 28px;
   }
 
@@ -90,11 +89,6 @@
 
 }
 
-@media screen and (max-width: 767px) {
-  
+@media screen and (max-width: 767px) {}
 
-}
-
-@media screen and (max-width: 567px) {
-  
-}
+@media screen and (max-width: 567px) {}
