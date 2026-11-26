@@ -1,9 +1,10 @@
 
-nav {
+/* .nav-menu {
     position: relative;
     z-index: 5;
-}
-ul {
+} */
+
+.links-container{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,11 +12,11 @@ ul {
     gap: 40px;
 }
 
-ul li {
+.menu-link{
     list-style: none;
 }
 
-ul li a {
+.menu-link a {
     text-decoration: none;
     color: var(--dark-lime-green);
     font-size: 20px;
@@ -27,6 +28,6 @@ ul li a {
     color: var(--dark-cyan);
 }
 
-ul li a:hover, ul li a:active {
+.menu-link a:hover, .menu-link a:active {
     color: var(--dark-cyan);
 }

@@ -16,7 +16,7 @@ export default function Header() {
     return (
         <header>
             <div className="container">
-                <nav>
+                <nav className="menu-nav">
                     <div className="logo">
                         <Link to='/'>
                             <img src="../../../icon.png" alt="Logo" className="logo-image"/>
